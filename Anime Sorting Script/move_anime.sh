@@ -12,7 +12,7 @@ getseriesfromsubfolder(){
 }
 #Get names of new files, make unique
 getnewfiles(){
-	FOLDER_NAME_From_File_LIST="$(find . -maxdepth 1 -name '*.mkv'|sed -E "s/^\.\///g"|grep -E "(\[[a-zA-Z0-9]{8}\])?\.mkv$"|grep -E ".? - \b([0-9]{2,})\b.*\.mkv"|sed -E "s/^\[([a-zA-Z0-9.\-]|[a-zA-Z0-9. ]){3,}\] //g"|sed -E "s/\.? - [0-9]{2,}.*\.mkv//g"|sed -E "/\b([0-9]{2,})\b.*\.mkv/d"|awk '!a[$0]++')"
+	FOLDER_NAME_From_File_LIST="$(find . -maxdepth 1 -name '*.mkv'|sed -E "s/^\.\///g"|grep -E "(\[[a-zA-Z0-9]{8}\])?\.mkv$"|grep -E ".? - \b(([0-9]{2,})|(((ONA)|(S))[0-9]*E[0-9]*))\b.*\.mkv"|sed -E "s/^\[([a-zA-Z0-9.\-]|[a-zA-Z0-9. ]){3,}\] //g"|sed -E "s/\.? - (([0-9]{2,})|(((ONA)|(S))[0-9]*E[0-9]*)).*\.mkv//g"|sed -E "/\b([0-9]{2,})\b.*\.mkv/d"|awk '!a[$0]++'|sed -E "s/(\.){1,}$//g")"
 }
 #Get names of non-series/movies
 getmovies(){
